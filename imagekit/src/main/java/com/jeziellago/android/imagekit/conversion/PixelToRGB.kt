@@ -14,16 +14,12 @@
  * limitations under the License.
  */
 
-package com.jeziellago.android.imagekit
+package com.jeziellago.android.imagekit.conversion
 
+import com.jeziellago.android.imagekit.config.RGB_ARRAY_SIZE
 import com.jeziellago.android.imagekit.array.FloatRGBArray
 import com.jeziellago.android.imagekit.array.IntRGBArray
 
-const val RGB_ARRAY_SIZE = 3
-const val RGB_R_INDEX = 0
-const val RGB_G_INDEX = 1
-const val RGB_B_INDEX = 2
-const val EXP_4D_DIM_SIZE = 1
 
 internal fun Int.convertToRedRGB(): Int {
     return this shr 16 and 0xFF
@@ -35,13 +31,6 @@ internal fun Int.convertToGreenRGB(): Int {
 
 internal fun Int.convertToBlueRGB(): Int {
     return this and 0xFF
-}
-
-internal fun Int.convertToGray(): Int {
-    val grayPx = convertToRedRGB() +
-            convertToBlueRGB() +
-            convertToGreenRGB()
-    return ((grayPx / RGB_ARRAY_SIZE) shl 24)
 }
 
 fun Int.toRGBArray(): IntArray {
@@ -78,11 +67,4 @@ fun IntArray.pixelArrayToRGBMatrix(width: Int, height: Int): Array<Array<FloatAr
         }
     }
     return rgbMatrix
-}
-
-fun IntArray.convertToGrayScale() {
-    for (index in 0 until size) {
-        val px = this[index]
-        this[index] = px.convertToGray()
-    }
 }

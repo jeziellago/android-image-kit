@@ -18,15 +18,11 @@ package com.jeziellago.android.imagekit
 
 import android.graphics.Bitmap
 import android.graphics.Matrix
+import com.jeziellago.android.imagekit.config.*
+import com.jeziellago.android.imagekit.conversion.convertToGrayScale
+import com.jeziellago.android.imagekit.conversion.pixelArrayToRGBMatrix
 
 class Image(private var image: Bitmap) {
-    
-    companion object {
-        private const val EMPTY_X = 0
-        private const val EMPTY_Y = 0
-        private const val EMPTY_OFFSET = 0
-        private const val NO_FILTER = false
-    }
 
     fun resize(newWidth: Float, newHeight: Float): Image {
         val width = image.width
@@ -61,5 +57,5 @@ class Image(private var image: Bitmap) {
 
     fun reshapeTo4D() =  Array(EXP_4D_DIM_SIZE){ convertToRGBMatrix() }
 
-    fun getBitmap() = image
+    fun toBitmap() = image
 }

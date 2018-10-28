@@ -32,7 +32,7 @@ class ImageTest {
 
         image.resize(expWidth.toFloat(), expHeight.toFloat())
 
-        val bmp = image.getBitmap()
+        val bmp = image.toBitmap()
         val assertCondition = (bmp.width == expWidth && bmp.height == expHeight)
         assertTrue(assertCondition)
     }

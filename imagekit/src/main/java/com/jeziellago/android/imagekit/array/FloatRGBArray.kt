@@ -16,10 +16,10 @@
 
 package com.jeziellago.android.imagekit.array
 
-import com.jeziellago.android.imagekit.RGB_ARRAY_SIZE
-import com.jeziellago.android.imagekit.RGB_B_INDEX
-import com.jeziellago.android.imagekit.RGB_G_INDEX
-import com.jeziellago.android.imagekit.RGB_R_INDEX
+import com.jeziellago.android.imagekit.config.RGB_ARRAY_SIZE
+import com.jeziellago.android.imagekit.config.RGB_B_INDEX
+import com.jeziellago.android.imagekit.config.RGB_G_INDEX
+import com.jeziellago.android.imagekit.config.RGB_R_INDEX
 
 
 class FloatRGBArray(r: Int, g: Int, b: Int) {

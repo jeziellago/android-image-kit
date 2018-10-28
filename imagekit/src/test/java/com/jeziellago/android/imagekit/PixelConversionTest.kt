@@ -1,5 +1,7 @@
 package com.jeziellago.android.imagekit
 
+import com.jeziellago.android.imagekit.config.RGB_ARRAY_SIZE
+import com.jeziellago.android.imagekit.conversion.*
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test

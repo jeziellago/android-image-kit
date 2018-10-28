@@ -14,24 +14,21 @@
  * limitations under the License.
  */
 
-package com.jeziellago.android.imagekit.array
+package com.jeziellago.android.imagekit.conversion
 
 import com.jeziellago.android.imagekit.config.RGB_ARRAY_SIZE
-import com.jeziellago.android.imagekit.config.RGB_B_INDEX
-import com.jeziellago.android.imagekit.config.RGB_G_INDEX
-import com.jeziellago.android.imagekit.config.RGB_R_INDEX
 
 
-class IntRGBArray(r: Int, g: Int, b: Int) {
-
-    private var rgbArray: IntArray = IntArray(RGB_ARRAY_SIZE)
-
-    init {
-        rgbArray[RGB_R_INDEX] = r
-        rgbArray[RGB_G_INDEX] = g
-        rgbArray[RGB_B_INDEX] = b
+fun IntArray.convertToGrayScale() {
+    for (index in 0 until size) {
+        val px = this[index]
+        this[index] = px.pixelToGray()
     }
+}
 
-    fun toIntArray() = rgbArray
-
+private fun Int.pixelToGray(): Int {
+    val grayPx = convertToRedRGB() +
+            convertToBlueRGB() +
+            convertToGreenRGB()
+    return ((grayPx / RGB_ARRAY_SIZE) shl 24)
 }
