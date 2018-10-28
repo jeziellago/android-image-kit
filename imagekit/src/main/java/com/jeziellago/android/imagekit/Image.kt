@@ -59,7 +59,7 @@ class Image(private var image: Bitmap) {
         }
     }
 
-    fun reshapeTo4D(matrix: Array<Array<FloatArray>>) =  Array(EXP_4D_DIM_SIZE){ matrix }
+    fun reshapeTo4D() =  Array(EXP_4D_DIM_SIZE){ convertToRGBMatrix() }
 
     fun getBitmap() = image
 }
