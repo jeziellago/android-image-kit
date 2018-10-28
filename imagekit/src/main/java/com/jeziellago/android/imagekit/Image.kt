@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2018 Android Image Kit
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.jeziellago.android.imagekit
 
 import android.graphics.Bitmap
@@ -25,24 +41,25 @@ class Image(private var image: Bitmap) {
         return this
     }
 
-    fun convertToRGBMatrix(matrixWidth: Int, matrixHeight: Int): Array<Array<FloatArray>> {
-        val pixelValues = IntArray(matrixWidth * matrixHeight)
-
-        with(image) { getPixels(pixelValues, EMPTY_OFFSET, width, EMPTY_X, EMPTY_X, width, height) }
-
-        val finalMatrix = Array(matrixWidth){ _ -> Array(matrixHeight){FloatArray(RGB_ARRAY_SIZE)}}
-
-        var index = 0
-        for (i in 0 until matrixWidth) {
-            for (j in 0 until matrixHeight) {
-                val px = pixelValues[index++]
-                finalMatrix[i][j] = px.toNormalizedArrayRGB()
-            }
+    fun convertToGray(): Image {
+        with(image) {
+            val pixelValues = IntArray(width * height)
+            getPixels(pixelValues, EMPTY_OFFSET, width, EMPTY_X, EMPTY_X, width, height)
+            pixelValues.convertToGrayScale(width, height)
+            image = Bitmap.createBitmap(pixelValues, width, height, image.config)
         }
-        return finalMatrix
+        return this
+    }
+
+    fun convertToRGBMatrix(): Array<Array<FloatArray>> {
+        with(image) {
+            val pixelValues = IntArray(width * height)
+            getPixels(pixelValues, EMPTY_OFFSET, width, EMPTY_X, EMPTY_X, width, height)
+            return pixelValues.pixelArrayToRGBMatrix(width, height)
+        }
     }
 
     fun reshapeTo4D(matrix: Array<Array<FloatArray>>) =  Array(EXP_4D_DIM_SIZE){ matrix }
 
-    fun getImageBitmap() = image
+    fun getBitmap() = image
 }
