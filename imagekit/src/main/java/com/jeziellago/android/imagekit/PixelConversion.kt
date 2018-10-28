@@ -80,12 +80,9 @@ fun IntArray.pixelArrayToRGBMatrix(width: Int, height: Int): Array<Array<FloatAr
     return rgbMatrix
 }
 
-fun IntArray.convertToGrayScale(width: Int, height: Int) {
-    var index = 0
-    for (i in 0 until width) {
-        for (j in 0 until height) {
-            val px = this[index]
-            this[index++] = px.convertToGray()
-        }
+fun IntArray.convertToGrayScale() {
+    for (index in 0 until size) {
+        val px = this[index]
+        this[index] = px.convertToGray()
     }
 }

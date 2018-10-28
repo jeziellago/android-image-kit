@@ -45,7 +45,7 @@ class Image(private var image: Bitmap) {
         with(image) {
             val pixelValues = IntArray(width * height)
             getPixels(pixelValues, EMPTY_OFFSET, width, EMPTY_X, EMPTY_X, width, height)
-            pixelValues.convertToGrayScale(width, height)
+            pixelValues.convertToGrayScale()
             image = Bitmap.createBitmap(pixelValues, width, height, image.config)
         }
         return this
