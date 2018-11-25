@@ -7,6 +7,24 @@ Open-source library for image processing in Android.
 - Bitmap to RGB Matrix
 - Draw Text, Rect, Circle, Points
 
+### Add in your project
+Step 1. Add the JitPack repository to your build file
+- Add it in your root build.gradle at the end of repositories:
+```gradle
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+Step 2. Add the dependency:
+```gradle
+dependencies {
+        implementation 'com.github.jeziellago:android-image-kit:v0.1-alpha'
+}
+```
+## Examples:
 ### RGB to Gray Scale
 ```kotlin
 val grayImage = Image(rgbImage)
