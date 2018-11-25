@@ -14,6 +14,23 @@ val grayImage = Image(rgbImage)
                 .toBitmap()
 ```
 
+### Bitmap to RGB Matrix
+```kotlin
+val rgb3dMatrix = Image(imageBitmap).convertToRGBMatrix()
+```
+
+### Resize
+```kotlin
+val resizedBitmap = Image(imageBitmap)
+                .resize(newWidth = 200f, newHeight = 250f)
+                .toBitmap()
+```
+
+### Reshape to 4D (used in machine learning)
+```kotlin
+val image4dArray = Image(imageBitmap).reshapeTo4D()
+```
+
 ### Gaussian Blur Filter
 ```kotlin
 val gaussianBlurImage = GaussianBlur(context).apply(sourceImage)
