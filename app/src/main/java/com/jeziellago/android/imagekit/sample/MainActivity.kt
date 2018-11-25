@@ -1,9 +1,10 @@
-package com.jeziellago.android.imagekit
+package com.jeziellago.android.imagekit.sample
 
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.jeziellago.android.imagekit.Image
 import com.jeziellago.android.imagekit.draw.ImagePaint
 import com.jeziellago.android.imagekit.filter.GaussianBlur
 import kotlinx.android.synthetic.main.activity_main.*

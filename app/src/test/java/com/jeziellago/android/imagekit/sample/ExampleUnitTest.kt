@@ -1,4 +1,4 @@
-package com.jeziellago.android.imagekit
+package com.jeziellago.android.imagekit.sample
 
 import org.junit.Test
 
