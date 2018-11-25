@@ -19,7 +19,7 @@ val grayImage = Image(rgbImage)
 val gaussianBlurImage = GaussianBlur(context).apply(sourceImage)
 ```
 
-### Drawing text
+### Drawing Text
 ```kotlin
 val bitmap = ImagePaint(sourceBitmap)
                 .drawText(text = "Draw text here",
@@ -29,4 +29,18 @@ val bitmap = ImagePaint(sourceBitmap)
                         positionY = 200f)
                 .toBitmap()
 ```
+### Drawing Points
+```kotlin
+val bitmap = ImagePaint(sampleImage)
+                .drawPoints(points = 10f, 20f, 30f, ...)
+                .toBitmap()
+```
+
+### Drawing Rect
+```kotlin
+val bitmap = ImagePaint(sampleImage)
+                .drawRect(rect = rectObject)
+                .toBitmap()
+```
+
 _This library is in working progress_. Contribute to new features!
